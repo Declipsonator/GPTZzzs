@@ -16,6 +16,11 @@ Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a 
 <br/>
 <br/>
 
+
 <b>Before           |  After</b>
 :-------------------------:|:-------------------------:
 <img src="https://user-images.githubusercontent.com/96392121/218274220-3a7741e2-3c9b-4139-b26b-3bd5135a503c.png" height="400" width="380" /> | <img src="https://user-images.githubusercontent.com/96392121/218274223-c1f4fe84-9a61-4348-9ec7-815d7526be25.png" height="400" width="380"/>
+
+
+<a href="https://www.buymeacoffee.com/declipsonator" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-black.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
