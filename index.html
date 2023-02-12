@@ -41,7 +41,7 @@
         font-weight: bold;
       }
 
-      textarea, input {
+      textarea, input, select {
 		border-radius: 5px;
 		border-width: 3px;
 		font-weight: bold;
@@ -112,18 +112,20 @@
     </style>
 	
 	<script>
-		var synonymss;
-	
+		var zaibacuThesaurus;
+	    var finnplSynonyms;
+		 
 		async function updateText() {
 			let percentToChange = document.getElementById("input-percent").value;
 			let inputText = document.getElementById("input-text").value;
+			let inputCollection = document.getElementById("input-collection").value;
 			let words = inputText.split(" ");
 
 			let newWords = "";
 			let num_words = Math.floor(words.length * percentToChange / 100);
 			let chosen_indices = getRandomSampleFromRange(0, words.length, num_words)
 
-			if(synonymss == null) {
+			if(inputCollection == "1" && zaibacuThesaurus == null) {
 				await fetch("https://raw.githubusercontent.com/zaibacu/thesaurus/master/en_thesaurus.jsonl")
 					.then(response => response.text())
 					.then(data => {
@@ -138,7 +140,40 @@
 						word_synonyms.forEach(entry => {
 							synonyms[entry.word] = entry.synonyms;
 						});
-						synonymss = synonyms;
+						zaibacuThesaurus = synonyms;
+
+					})
+					.catch(error => console.error(error));
+				console.log("Fetched synonyms")
+			} else if(inputCollection == "2" && finnplSynonyms == null) {
+				await fetch("https://raw.githubusercontent.com/FinNLP/synonyms/master/src.json")
+					.then(response => response.text())
+					.then(data => {
+						let synonyms = JSON.parse(data);
+
+						for (const [key, value] of Object.entries(synonyms)) {
+						  synonyms[key] = [];
+						  for (const [k, v] of Object.entries(value)) {
+							synonyms[key] = synonyms[key].concat(v.slice(1));
+						  }
+						  if (synonyms[key].includes("v")) {
+							synonyms[key].splice(synonyms[key].indexOf("v"), 1);
+						  }
+						  if (synonyms[key].includes("s")) {
+							synonyms[key].splice(synonyms[key].indexOf("s"), 1);
+						  }
+						  if (synonyms[key].includes("r")) {
+							synonyms[key].splice(synonyms[key].indexOf("r"), 1);
+						  }
+						  if (synonyms[key].includes("a")) {
+							synonyms[key].splice(synonyms[key].indexOf("a"), 1);
+						  }
+						  if (synonyms[key].includes("n")) {
+							synonyms[key].splice(synonyms[key].indexOf("n"), 1);
+						  }
+						}
+
+						finnplSynonyms = synonyms;
 
 					})
 					.catch(error => console.error(error));
@@ -146,6 +181,10 @@
 			}
 			
 			console.log(chosen_indices)
+			
+			let synonymss = null;
+			if(inputCollection == "1") synonymss = zaibacuThesaurus;
+			else if(inputCollection == "2") synonymss = finnplSynonyms;
 				
 				
 			for (let i = 0; i < words.length; i++) {
@@ -243,6 +282,13 @@
       <br>
       <input id="input-percent" type="number" min="0" max="100" value="20"></textarea>
       <br><br>
+	  <label for="input-text">Synonym Collection:</label>
+      <br>
+	  <select id="input-collection">
+	    <option value="1">Zaibacu Thesaurus</option>
+	    <option value="2">FinNLP Synonyms</option>
+	  </select>
+	  <br><br>
 	  <button type="button"
 				onmouseover="this.style.backgroundColor='gray'; this.style.cursor='pointer';" 
 				onmouseout="this.style.backgroundColor='white'; this.style.cursor='auto';"
