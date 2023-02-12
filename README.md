@@ -7,6 +7,7 @@ ChatGpt/Gpt3 detector bypasser. Works with all detectors including GptZero.
 3. Run `python main.py`
 4. Input the percentage of words to change and run it\
 <b>(The best percentage is between 20% and 30%)</b>
+5. Select which collection of synonyms you want. Both work but FinNLP requires a higher percentage because it has less words.
 5. You're Done! Check output.txt for the result.
 
 It is recommended to go over the text and fix any weird bits once finished.
@@ -23,6 +24,7 @@ Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a 
 
 ## TODO
 - <del>Replace words with synonyms</del>
+- Only use synonyms that are common words in english
 - Remove/add unnecessary words
 - Reorder sentences
 - Switch out expressions
