@@ -1,4 +1,4 @@
-# Contributing to [Project Name]
+# Contributing to GPTZzzs
 
 We welcome and appreciate contributions from the community. If you're interested in contributing to the project, here are some guidelines to get started.
 How to contribute
