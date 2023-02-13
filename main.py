@@ -52,9 +52,25 @@ if collection < 1 or collection > 2:
     print("\033[0;31;40mNumber needs to be between 1 and 2\033[0m")
     exit()    
     
+    
+    
+ignore_quotes = input("""
+\033[1;32;40mIgnore Quotations (y/N): \033[0m""")
+
+if ignore_quotes.lower() == "y" or ignore_quotes.lower() == "yes":
+    ignore_quotes = True
+    
+elif ignore_quotes.lower() == "n" or ignore_quotes.lower() == "yes":
+    ignore_quotes = False
+else:
+    print("\033[0;31;40mInvalid answer, answer with y or n\033[0m")
+    exit()
+
+
+    
 
 # Load synonym file or download it if it doesn't exist
-
+print("")
 if os.path.exists("{}{}".format(collection, file_name)):
     with open("{}{}".format(collection, file_name), "r") as f:
         text = f;
@@ -136,8 +152,12 @@ newWords = ""
 num_words = int(len(words) * percentToChange / 100)
 chosen_indices = random.sample(range(len(words)), num_words)
 
+quotation_count = 0
 for i in range(len(words)):
-    if i in chosen_indices:
+    if "\"" in words[i]:
+        quotation_count += words[i].count("\"")
+    
+    if i in chosen_indices and (quotation_count % 2 == 0 or ignore_quotes):
         word = words[i]
         endswith = ""
         if word.endswith((".", ",", "!", "'", "?", ":", ";")):
