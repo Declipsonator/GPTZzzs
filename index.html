@@ -41,7 +41,7 @@
         font-weight: bold;
       }
 
-      textarea, input, select {
+      textarea, input, select, input-ignore-quotes {
 		border-radius: 5px;
 		border-width: 3px;
 		font-weight: bold;
@@ -119,6 +119,7 @@
 			let percentToChange = document.getElementById("input-percent").value;
 			let inputText = document.getElementById("input-text").value;
 			let inputCollection = document.getElementById("input-collection").value;
+			let ignoreQuotes = document.getElementById("input-ignore-quotes").checked;
 			let words = inputText.split(" ");
 
 			let newWords = "";
@@ -186,10 +187,11 @@
 			if(inputCollection == "1") synonymss = zaibacuThesaurus;
 			else if(inputCollection == "2") synonymss = finnplSynonyms;
 				
-				
+			let quoteCount = 0;
 			for (let i = 0; i < words.length; i++) {
-				if (chosen_indices.includes(i)) {
-					console.log("I ran")
+				if(words[i].indexOf("\"") != -1) quoteCount += (words[i].match(/"/g) || []).length;
+			
+				if (chosen_indices.includes(i) && (quoteCount % 2 == 0 || !ignoreQuotes)) {
 					let word = words[i];
 					let endswith = "";
 					if (word.endsWith(".") || word.endsWith(",") || word.endsWith("!") || word.endsWith("'") || word.endsWith("?") || word.endsWith(":") || word.endsWith(";")) {
@@ -280,7 +282,7 @@
 	  <br><br>
 	  <label for="input-text">Percentage To Change:</label>
       <br>
-      <input id="input-percent" type="number" min="0" max="100" value="20"></textarea>
+      <input id="input-percent" type="number" min="0" max="100" value="20"></input>
       <br><br>
 	  <label for="input-text">Synonym Collection:</label>
       <br>
@@ -288,6 +290,10 @@
 	    <option value="1">Zaibacu Thesaurus</option>
 	    <option value="2">FinNLP Synonyms</option>
 	  </select>
+	  <br><br>
+	  <label for="input-text">Ignore Quotes:</label>
+      <br>
+	  <input id="input-ignore-quotes" type="checkbox" value="ignore" checked></input>
 	  <br><br>
 	  <button type="button"
 				onmouseover="this.style.backgroundColor='gray'; this.style.cursor='pointer';" 
