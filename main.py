@@ -157,7 +157,7 @@ for i in range(len(words)):
     if "\"" in words[i]:
         quotation_count += words[i].count("\"")
     
-    if i in chosen_indices and (quotation_count % 2 == 0 or ignore_quotes):
+    if i in chosen_indices and (quotation_count % 2 == 0 or not ignore_quotes):
         word = words[i]
         endswith = ""
         if word.endswith((".", ",", "!", "'", "?", ":", ";")):
