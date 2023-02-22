@@ -25,7 +25,7 @@ Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a 
 ## TODO
 - <del>Replace words with synonyms</del>
 - Only use synonyms that are common words in english
-- Remove/add unnecessary words
+- <del>Remove/add unnecessary words</del>
 - Reorder sentences
 - Switch out expressions
 - Abbreviate/unabbreviate words/phrases
