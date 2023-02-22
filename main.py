@@ -220,12 +220,12 @@ for i in range(len(words)):
     if "\"" in words[i]:
         quotation_count += words[i].count("\"")
 
-    if words[i] in emphasis_words and words[i+1] and words[i+1] in adjectives and quotation_count % 2 == 0:
+    if words[i] in emphasis_words and words[i+1] and words[i+1] in adjectives and (quotation_count % 2 == 0 or not ignore_quotes):
         if random.randint(0, 100) < percentToChangeAdj:
             dont_change = True
             continue
 
-    if words[i] in adjectives and not dont_change and quotation_count % 2 == 0:
+    if words[i] in adjectives and not dont_change and (quotation_count % 2 == 0 or not ignore_quotes):
         if random.randint(0, 100) < percentToChangeAdj:
             emp_word = random.choice(emphasis_words)
             newWords = "{}{} {}".format(newWords, emp_word, words[i])
