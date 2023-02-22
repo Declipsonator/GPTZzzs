@@ -1,0 +1,97 @@
+body {
+    color: red;
+    text-align: center;
+    background-color: black;
+    font-size: 130%;
+    align-content: center;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 300%;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 200%;
+    font-weight: 900;
+}
+
+form {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+textarea, input, select, input-ignore-quotes {
+    border-radius: 5px;
+    border-width: 3px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 16px;
+    border-color: purple;
+    background-opacity: 1;
+    opacity: 1;
+    color: gray;
+    background-color:rgba(0, 0, 0, 0);
+    border-style: solid;
+}
+
+textarea {
+
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: lightblue;
+    border: none;
+    border-radius: 5px;
+}
+
+#output-text {
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 60%;
+    font-weight: bold;
+    line-height: 30px;
+    border-color: purple;
+    border-style: solid;
+    border-radius: 5px;
+    min-height: 100px;
+    padding: 10px;
+    width: 50%;
+    display: inline-block;
+}
+
+*:focus{
+    outline: none;
+}
+
+
+#smaller {
+    font-size: 50%;
+    width: 70%;
+    display: inline-block;
+}
+
+img {
+    border-radius: 400px;
+}
+
+
+input[type="number"] {
+    font-weight: bold;
+}
+
+#copy {
+    color: gray;
+    text-align: center;
+    width: 80px;
+}
