@@ -1,3 +1,17 @@
+/*
+This file is part of the GPTZzzs distribution (https://github.com/Declipsonator/gptzzzs).
+Copyright (c) Gptzzzs.
+
+Quick summary for people who think they can just copy this:
+
+You can, but this is licensed under GPL-3 which basically states
+that you need to give credit if you do copy this. So put a link gptzzzs in
+your readme and your website and a message stating that yout took code from here
+
+thanks (:
+ */
+
+
 var zaibacuThesaurus;
 var finnplSynonyms;
 var adjectives;
@@ -185,5 +199,7 @@ async function copyContent() {
         console.error("ERROR", err);
     }
 }
+
+
 
 

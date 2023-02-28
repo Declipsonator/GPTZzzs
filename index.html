@@ -1,23 +1,39 @@
-<html>
-  <head>  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-84HGDP99HG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-84HGDP99HG');
-  </script>
+<!--
+This file is part of the GPTZzzs distribution (https://github.com/Declipsonator/gptzzzs).
+Copyright (c) Gptzzzs.
 
-    <title>GPTZzzs</title>
+Quick summary for people who think they can just copy this:
+
+You can, but this is licensed under GPL-3 which basically states
+that you need to give credit if you do copy this. So put a link gptzzzs in
+your readme and your website and a message stating that yout took code from here
+
+thanks (:
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-84HGDP99HG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-84HGDP99HG');
+    </script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
+      <title>GPTZzzs</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js"></script>
-	<link rel="icon" type="image/svg+xml" href="http://icons.veryicon.com/128/Avatar/Multiple%20Smileys/Clown%20Impish.png" />
-	
+	<link rel="icon" type="image/svg+xml" href="assets/favicon.ico" />
+
 	<meta name="title" content="GPTZzzs | Bypass Gpt Detectors">
     <meta name="description" content="Get passed AI detectors by putting your text in this website.">
-    
+
     <!-- Open Graph / Facebook / discord -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://declipsonator.github.io/gptzzzs">
@@ -25,20 +41,20 @@
     <meta property="og:title" content="GPTZzzs | Bypass Gpt Detectorss">
     <meta property="og:description" content="Get passed AI detectors by putting your text in this website.">
     <meta name="theme-color" content="#55ed80" />
-    <meta property="og:image" content="http://2.bp.blogspot.com/-gHs_OFvxOAs/VTUF4Pkmu1I/AAAAAAAAAss/YIWiH36LktY/s1600/Unblocked%2BGames.jpg">
-    
+    <meta property="og:image" content="assets/preview.jpg">
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://dev.mccrawler.com/">
+    <meta property="twitter:url" content="https://declipsonator.github.io/gptzzzs">
     <meta property="twitter:title" content="GPTZzzs | Bypass Gpt Detectorss">
     <meta property="twitter:description" content="Get passed AI detectors by putting your text in this website.">
-    <meta property="twitter:image" content="http://2.bp.blogspot.com/-gHs_OFvxOAs/VTUF4Pkmu1I/AAAAAAAAAss/YIWiH36LktY/s1600/Unblocked%2BGames.jpg">
+    <meta property="twitter:image" content="assets/preview.jpg">
   </head>
   <body>
-	  
+
 	<br/>
-    <h1>GPTZzzs</h1>
-	<p  >ChatGpt/Gpt3 detector bypasser. Works with all detectors including GptZero.</p>
+    <h1>GPT<span class="darker-text">Zzzs</span></h1>
+    <p>ChatGpt/Gpt3 detector bypasser. <span class="yellow-text">Works with all detectors</span> including GptZero.</p>
 	<br/>
     <form onsubmit="event.preventDefault();">
       <label for="input-text">Input Text:</label>
@@ -65,23 +81,18 @@
         <input id="input-ignore-quotes" type="checkbox" value="ignore" checked/>
 	  <br><br>
 	  <button type="button"
-				onmouseover="this.style.backgroundColor='gray'; this.style.cursor='pointer';" 
-				onmouseout="this.style.backgroundColor='white'; this.style.cursor='auto';"
 				onclick="updateText();">Submit</button>
     </form>
-    
+
     <h2>Output Text:</h2>
     <p id="output-text">Your output text will appear here.</p>
     <br/>
 	<button id="copy" type="button"
-				onmouseover="this.style.backgroundColor='gray'; this.style.cursor='pointer';" 
-				onmouseout="this.style.backgroundColor='white'; this.style.cursor='auto';"
 				onclick="copyContent();">Copy</button>
 	<br/><br/><br/><br/>
 	<hr>
-	<h2>Information</h2>
-	<p id="smaller">Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a number of words with their counterparts. While this works most of the time, sometimes synonyms can be very odd and the text  would require fixing by humans. This process however does a great job at getting past GPT detectors! This works with every detector tested from GPT Zero to the Grammarly Plagiarism Check. </p>
-	</br>
+	<h5>Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a number of words with their counterparts. While this works most of the time, sometimes synonyms can be very odd and the text  would require fixing by humans. This process however does a great job at getting past GPT detectors! This works with every detector tested from GPT Zero to the Grammarly Plagiarism Check. </h5>
+	<br/>
     <br/>
 	<a id="smaller" href="https://github.com/Declipsonator/gptzzzs"><img width="30px" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"/></a>
   </body>
