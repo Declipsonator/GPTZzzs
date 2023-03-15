@@ -1,6 +1,8 @@
 output.txt
 1synonyms.json
 2synonyms.json
+1synonyms-common.json
+2synonyms-common.json
 text.txt
 .idea/
 adjectives.json

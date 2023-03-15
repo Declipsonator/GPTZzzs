@@ -5,10 +5,11 @@ import random
 import re
 import time
 
-file_name = "synonyms.json"
+file_name = "synonyms"
 zaibacu_url = "https://raw.githubusercontent.com/zaibacu/thesaurus/master/en_thesaurus.jsonl"
 finnlp_url = "https://raw.githubusercontent.com/FinNLP/synonyms/master/src.json"
 adjective_url = "https://raw.githubusercontent.com/rgbkrk/adjectives/master/index.js"
+common_words_url = "https://raw.githubusercontent.com/first20hours/google-10000-english/master/20k.txt"
 
 print("""\033[1;31;40m
 ░██████╗░██████╗░████████╗███████╗███████╗███████╗░██████╗
@@ -18,6 +19,8 @@ print("""\033[1;31;40m
 ╚██████╔╝██║░░░░░░░░██║░░░███████╗███████╗███████╗██████╔╝
 ░╚═════╝░╚═╝░░░░░░░░╚═╝░░░╚══════╝╚══════╝╚══════╝╚═════╝░
 \033[0m""")
+
+
 
 percentToChangeSyn = input("\033[1;32;40mPercentage of words to replace with synonyms (Recommended: 20-30 for Zaibacu, 70-90 for FinNLP):\033[0m")
 
@@ -30,6 +33,7 @@ except:
 if percentToChangeSyn < 0 or percentToChangeSyn > 100:
     print("\033[0;31;40mNumber needs to be between 0 and 100\033[0m")
     exit()
+
 
 collection = input("""
 Synonym Collection to Use:
@@ -49,6 +53,8 @@ if collection < 1 or collection > 2:
     print("\033[0;31;40mNumber needs to be between 1 and 2\033[0m")
     exit()
 
+
+
 percentToChangeAdj = input("\n\033[1;32;40mPercentage of adjectives to change emphasis on (Recommended: 50-80): \033[0m")
 
 try:
@@ -60,6 +66,8 @@ except:
 if percentToChangeAdj < 0 or percentToChangeAdj > 100:
     print("\033[0;31;40mNumber needs to be between 0 and 100\033[0m")
     exit()
+
+
 
 ignore_quotes = input("""
 \033[1;32;40mIgnore Quotations (y/N): \033[0m""")
@@ -73,14 +81,29 @@ else:
     print("\033[0;31;40mInvalid answer, answer with y or n\033[0m")
     exit()
 
+
+use_common_words = input("""
+\033[1;32;40mOnly Use Common Words (y/N) (Not Recommended): \033[0m""")
+
+if use_common_words.lower() == "y" or use_common_words.lower() == "yes":
+    ignore_quotes = True
+
+elif use_common_words.lower() == "n" or use_common_words.lower() == "yes":
+    use_common_words = False
+else:
+    print("\033[0;31;40mInvalid answer, answer with y or n\033[0m")
+    exit()
+
+
+  
 # Load synonym file or download it if it doesn't exist
 print("")
-if os.path.exists("{}{}".format(collection, file_name)):
-    with open("{}{}".format(collection, file_name), "r") as f:
+if os.path.exists("{}{}.json".format(collection, file_name)) and (not use_common_words or not os.path.exists("{}{}-common.json".format(collection, file_name))):
+    with open("{}{}.json".format(collection, file_name), "r") as f:
         text = f
         synonyms = json.load(text)
         print("\033[1;33;40mLoaded synonym file from local folder")
-else:
+elif not os.path.exists("{}{}.json".format(collection, file_name)) and (not use_common_words or not os.path.exists("{}{}-common.json".format(collection, file_name))):
     try:
         if collection == 1:
             response = urllib.request.urlopen(zaibacu_url)
@@ -129,6 +152,49 @@ else:
 
     except Exception as e:
         print("\033[0;31;40mFailed to load synonyms file\033[0m")
+        print(e)
+        exit()
+
+
+
+
+# Make common words if needed
+print("")
+if use_common_words and os.path.exists("{}{}-common.json".format(collection, file_name)):
+    with open("{}{}-common.json".format(collection, file_name), "r") as f:
+        text = f
+        synonyms = json.load(text)
+        print("\033[1;33;40mLoaded common synonym file from local folder")
+elif use_common_words:
+    try:
+        response = urllib.request.urlopen(common_words_url)
+        data = response.read()
+        text = data.decode('utf-8')
+      
+        common_words = text.split("\n")
+
+        new_synonyms = {}
+        for key, value in synonyms.items():
+          updated_value = []
+          for synonym in value:
+              if synonym in common_words:
+                updated_value.append(synonym)
+          if updated_value:
+            new_synonyms[key] = updated_value
+        synonyms = new_synonyms
+      
+      
+
+
+        # Save dictionary to file
+
+        dict_file_name = "{}synonyms-common.json".format(collection)
+        with open(dict_file_name, "w") as f:
+            f.write(json.dumps(synonyms))
+            print("Saved common synonym dictionary to local folder")
+
+    except Exception as e:
+        print("\033[0;31;40mFailed to load common synonyms file\033[0m")
         print(e)
         exit()
 
