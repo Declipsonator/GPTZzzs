@@ -140,7 +140,7 @@ textarea, select, input {
     color: #676767;
 }
 
-img {
+#rounded {
     border-radius: 100px;
 }
 
