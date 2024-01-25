@@ -1,3 +1,7 @@
+# Quick Warning
+Hey, don't cheat in school (or anything for that matter), I made this project for fun because I find ai interesting. Is it even that good? No. Words are replaced with words that don't work in context or with ancient words that don't make sense. But is it fun to play around with? Yes. So enjoy.
+
+
 # GPTZzzs
 ChatGpt/Gpt3 detector bypasser. Works with all detectors including GptZero.
 
