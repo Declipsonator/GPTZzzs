@@ -1,3 +1,5 @@
+import re
+
 from setuptools import setup, find_packages
 from importlib import resources
 import urllib.request
@@ -34,38 +36,55 @@ def download_zaibacu():
     print("Wrote Zaibacu thesaurus to file")
 
 def download_finnlp():
+    # Download and load JSON directly
     response = urllib.request.urlopen(finnlp_url)
+    synonyms = json.loads(response.read().decode('utf-8'))
+    print("Loaded synonym file from remote URL")
+
+    # Write the original data to 'finnlp-separate.json'
+    separate_path = resources.files("gptzzzs").joinpath('data', "finnlp-separate.json")
+    with open(separate_path, "w") as f:
+        json.dump(synonyms, f)
+
+    # Process and write the simplified synonyms
+    for key, value in synonyms.items():
+        synonyms[key] = [word for k, v in value.items() for word in v[1:] if word not in {"v", "s", "r", "a", "n"}]
+
+    together_path = resources.files("gptzzzs").joinpath('data', "finnlp-together.json")
+    with open(together_path, "w") as f:
+        json.dump(synonyms, f)
+
+
+
+def download_common_words():
+    response = urllib.request.urlopen(common_words_url)
     data = response.read()
     text = data.decode('utf-8')
 
-    synonyms = json.loads(text)
-    print("Loaded synonym file from remote URL")
+    common_words = text.split("\n")
 
-    path = str(resources.files("gptzzzs").joinpath('data').joinpath("finnlp-separate.json"))
+    path = str(resources.files("gptzzzs").joinpath('data').joinpath("common_words.json"))
+
     with open(str(path), "w+") as f:
-        f.write(json.dumps(synonyms))
+        f.write(json.dumps(common_words))
 
-    # Create word-synonyms dictionary
-    for key, value in synonyms.items():
-        synonyms[key] = []
-        for k, v in value.items():
-            synonyms[key] += [word for word in v[1:]]
-        if "v" in synonyms[key]:
-            synonyms[key].remove("v")
-        if "s" in synonyms[key]:
-            synonyms[key].remove("s")
-        if "r" in synonyms[key]:
-            synonyms[key].remove("r")
-        if "a" in synonyms[key]:
-            synonyms[key].remove("a")
-        if "n" in synonyms[key]:
-            synonyms[key].remove("n")
 
-    path = str(resources.files("gptzzzs").joinpath('data').joinpath("finnlp-together.json"))
+def download_adjectives():
+    response = urllib.request.urlopen(adjective_url)
+    data = response.read()
+    text = data.decode('utf-8')
+
+    lines = text.split("\n")
+    adjectives = []
+
+    for i in range(1, len(lines) - 2):
+        adjective = re.search('\'(.*)\',', lines[i]).group(1)
+        adjectives.append(adjective)
+
+    path = str(resources.files("gptzzzs").joinpath('data').joinpath("adjectives.json"))
+
     with open(str(path), "w+") as f:
-        f.write(json.dumps(synonyms))
-
-
+        f.write(json.dumps(adjectives))
 
 
 
@@ -93,6 +112,8 @@ setup(
 prepare()
 download_zaibacu()
 download_finnlp()
+download_common_words()
+download_adjectives()
 
 
 
