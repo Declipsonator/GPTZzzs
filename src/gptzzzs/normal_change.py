@@ -67,4 +67,4 @@ def change_text(text, synonyms, adjectives, percent_synonyms=50, ignore_quotes=T
         if i != len(words) - 1:
             newWords = "{} ".format(newWords)
             
-        return newWords
+    return newWords

@@ -3,7 +3,7 @@ Hey, don't cheat in school (or anything for that matter), I made this project fo
 
 
 # GPTZzzs
-ChatGpt/Gpt3 detector bypasser. Works with all detectors including GptZero.
+ChatGpt/Gpt3 detector bypasser. This program takes a text file and replaces a percentage of the words with synonyms. This is a simple way to bypass GPT detectors and make your text look more original. This is a fun project and should not be used for cheating or any other malicious purposes.
 
 ## Running
 1. Install Python (This was tested on Python 3.1)
@@ -22,9 +22,10 @@ Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a 
 <br/>
 
 
-<b>Before           |  After</b>
-:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/96392121/218274220-3a7741e2-3c9b-4139-b26b-3bd5135a503c.png" height="400" width="380" /> | <img src="https://user-images.githubusercontent.com/96392121/218274223-c1f4fe84-9a61-4348-9ec7-815d7526be25.png" height="400" width="380"/>
+|                                                                  <b>Before                                                                   |                                                                  After</b>                                                                  |
+|:--------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://user-images.githubusercontent.com/96392121/218274220-3a7741e2-3c9b-4139-b26b-3bd5135a503c.png" height="400" width="380" /> | <img src="https://user-images.githubusercontent.com/96392121/218274223-c1f4fe84-9a61-4348-9ec7-815d7526be25.png" height="400" width="380"/> |
+
 
 ## TODO
 - <del>Replace words with synonyms</del>
@@ -34,5 +35,10 @@ Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a 
 - Switch out expressions
 - Abbreviate/unabbreviate words/phrases
 
-<a href="https://www.buymeacoffee.com/declipsonator" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-black.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+## Appearances
+- [Authorship Obfuscation in Multilingual Machine-Generated Text Detection](https://arxiv.org/abs/2401.07867)
+- [Navigating the Shadows: Unveiling Effective Disturbances for Modern AI Content Detectors](https://arxiv.org/abs/2406.08922)
+- [TAROT: Task-Oriented Authorship Obfuscation Using Policy Optimization Methods](https://arxiv.org/abs/2407.21630)
 
+## Credits
+Independently developed by [Jackson Hickey](https://github.com/declipsonator). Licensed under the GNU General Public License v3.0.

@@ -43,7 +43,7 @@ def download_finnlp():
 
     # Write the original data to 'finnlp-separate.json'
     separate_path = resources.files("gptzzzs").joinpath('data', "finnlp-separate.json")
-    with open(separate_path, "w") as f:
+    with open(str(separate_path), "w") as f:
         json.dump(synonyms, f)
 
     # Process and write the simplified synonyms
@@ -51,7 +51,7 @@ def download_finnlp():
         synonyms[key] = [word for k, v in value.items() for word in v[1:] if word not in {"v", "s", "r", "a", "n"}]
 
     together_path = resources.files("gptzzzs").joinpath('data', "finnlp-together.json")
-    with open(together_path, "w") as f:
+    with open(str(together_path), "w") as f:
         json.dump(synonyms, f)
 
 
