@@ -5,19 +5,23 @@ Hey, don't cheat in school (or anything for that matter), I made this project fo
 # GPTZzzs
 ChatGpt/Gpt3 detector bypasser. This program takes a text file and replaces a percentage of the words with synonyms. This is a simple way to bypass GPT detectors and make your text look more original. This is a fun project and should not be used for cheating or any other malicious purposes.
 
-## Running
-1. Install Python (This was tested on Python 3.1)
-2. Replace the content inside of text.txt with your gpt generated text
-3. Run `python main.py`
-4. Input the percentage of words to change and run it\
-<b>(The best percentage is between 20% and 30%)</b>
-5. Select which collection of synonyms you want. Both work but FinNLP requires a higher percentage because it has less words.
-5. You're Done! Check output.txt for the result.
+## Getting Started
+1. Download the package with `pip install gptzzzs`
+2. Run the program with the following:
+```python
+import gptzzzs
+
+thing = gptzzzs.Gptzzzs()
+
+text = "" # Put your text here
+
+response = thing.basic_change_text()(text)
+```
 
 It is recommended to go over the text and fix any weird bits once finished.
 
 ## Information
-Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a number of words with their counterparts. While this works most of the time, sometimes synonyms can be very odd and would require fixing by humans. This process however does a great job at getting past GPT detectors! This works with every detector tested from GPT Zero to the Grammarly Plagiarism Check.
+Currently, GPTZzzs works by downloading a dictionary of synonyms and replacing a number of words with their counterparts. While this works most of the time, sometimes synonyms can be very odd and would require fixing by humans.
 <br/>
 <br/>
 
@@ -34,6 +38,7 @@ Currently GPTZzzs works by downloading a dictionary of synonyms and replacing a 
 - Reorder sentences
 - Switch out expressions
 - Abbreviate/unabbreviate words/phrases
+- AI? (Maybe)
 
 ## Appearances
 - [Authorship Obfuscation in Multilingual Machine-Generated Text Detection](https://arxiv.org/abs/2401.07867)

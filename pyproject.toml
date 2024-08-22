@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "gptzzzs"
+version = "0.0.1"
+authors = [
+  { name="Jackson Hickey", email="jackson@jacksonhickey.tech" },
+]
+description = "Gptzzzs is a tool that attempts large language model detection evasion by changing grammar."
+readme = "README.md"
+requires-python = ">=3.1"
+classifiers=[
+    'Programming Language :: Python :: 3.1',
+    'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+    'Operating System :: OS Independent',
+]
+
+
+[project.urls]
+Homepage = "https://github.com/Declipsonator/GPTZzzs"
+Issues = "https://github.com/Declipsonator/GPTZzzs/issues"
