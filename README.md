@@ -44,6 +44,7 @@ Currently, GPTZzzs works by downloading a dictionary of synonyms and replacing a
 - [Authorship Obfuscation in Multilingual Machine-Generated Text Detection](https://arxiv.org/abs/2401.07867)
 - [Navigating the Shadows: Unveiling Effective Disturbances for Modern AI Content Detectors](https://arxiv.org/abs/2406.08922)
 - [TAROT: Task-Oriented Authorship Obfuscation Using Policy Optimization Methods](https://arxiv.org/abs/2407.21630)
+- [Who is speaking? Discriminating Artificial and Human-Generated Text with A Natural Language Processing Approach](https://dykang.github.io/classes/assets/past_projects/nlper_csci5541_s23_final.pdf)
 
 ## Credits
 Independently developed by [Jackson Hickey](https://github.com/declipsonator). Licensed under the GNU General Public License v3.0.
